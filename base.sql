@@ -6,9 +6,9 @@ CREATE TABLE work       (
                         alt_title VARCHAR(255),
                         release_date INT,
                         ending_date INT,
-                        studio,
+                        studio ENUM('studio1', 'studio2', 'studio3'),
                         idlangue,
-                        categorie,
+                        categorie ENUM('cat1', 'cat2', 'cat3'),
                         description VARCHAR(255));
 
 CREATE TABLE anime      (
