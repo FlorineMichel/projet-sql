@@ -109,3 +109,10 @@ CREATE TABLE themeWork	(
 						FOREIGN KEY (id_work) REFERENCES work (id),
 						FOREIGN KEY (id_theme) REFERENCES theme (id)
 );
+CREATE TABLE technicalDatasheet	(
+								id_work INT NOT NULL,
+								id_artist INT NOT NULL,
+								occupation VARCHAR(255) NOT NULL,
+								FOREIGN KEY (id_work) REFERENCES work (id),
+								FOREIGN KEY (id_artist) REFERENCES artist (id)
+);
