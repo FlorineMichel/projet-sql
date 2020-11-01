@@ -113,7 +113,8 @@ CREATE TABLE themeWork	(
 CREATE TABLE technicalDatasheet	(
 								id_work INT NOT NULL,
 								id_artist INT NOT NULL,
-								occupation VARCHAR(255) NOT NULL,
+								occupation ENUM('occ1', 'occ2', 'occ3') NOT NULL,
+								PRIMARY KEY (id_work, id_artist),
 								FOREIGN KEY (id_work) REFERENCES work (id),
 								FOREIGN KEY (id_artist) REFERENCES artist (id)
 );
