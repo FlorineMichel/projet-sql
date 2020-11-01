@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS pieces;
+CREATE DATABASE IF NOT EXISTS Pieces;
 
 CREATE TABLE work       (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE work       (
                         categorie ENUM('cat1', 'cat2', 'cat3') NOT NULL,
                         description VARCHAR(255),
                         id_language INT NOT NULL,
-                        FOREIGN KEY (idlanguage) REFERENCES language (id)
+                        FOREIGN KEY (id_language) REFERENCES language (id)
 );
 
 CREATE TABLE anime      (
@@ -87,11 +87,12 @@ CREATE TABLE theme      (
 );
 
 CREATE TABLE rating       (
-                        id_work INT PRIMARY KEY NOT NULL,
-                        id_user INT PRIMARY KEY NOT NULL,
+                        id_work INT NOT NULL,
+                        id_user INT NOT NULL,
                         rating INT NOT NULL /*limité à 10*/,
+                        PRIMARY KEY (id_work, id_user),
                         FOREIGN KEY (id_work) REFERENCES work (id),
-                        FOREIGN KEY (id_user) REFERENCES user (id)
+                        FOREIGN KEY (id_user) REFERENCES users (id)
 
 );
 CREATE TABLE genreWork	(
