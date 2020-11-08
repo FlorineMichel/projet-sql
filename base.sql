@@ -4,10 +4,7 @@ CREATE TABLE work       (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
                         title VARCHAR(255) NOT NULL,
                         alt_title VARCHAR(255),
-                        release_date INT NOT NULL,
-                        ending_date INT,
-                        studio ENUM('studio1', 'studio2', 'studio3') NOT NULL,
-                        categorie ENUM('cat1', 'cat2', 'cat3') NOT NULL,
+                        category ENUM('Shonen', 'Shojo', 'Seinen'),
                         description VARCHAR(255),
                         id_language INT NOT NULL,
                         FOREIGN KEY (id_language) REFERENCES language (id)
@@ -15,23 +12,31 @@ CREATE TABLE work       (
 
 CREATE TABLE anime      (
                         id_work INT,
+                        release_date DATE NOT NULL,
+                        ending_date DATE,
+                        studio ENUM('Toei Animation', 'Kyoto Animation') NOT NULL,
                         nbr_total_ep INT NOT NULL
 );
 
 CREATE TABLE movie       (
                         id_work INT,
+                        release_date DATE NOT NULL,
+                        studio ENUM('Studio Ghibli') NOT NULL,
                         duration INT NOT NULL
 );
 
 CREATE TABLE manga      (
                         id_work INT,
+                        release_date DATE NOT NULL,
+                        ending_date DATE,
                         nbr_volume INT NOT NULL,
+                        studio ENUM('Shueisha', 'D&C Media, Kakao') NOT NULL,
                         nbr_chap INT NOT NULL
 );
 
 CREATE TABLE users      (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        pseudo VARCHAR(255) NOT NULL,
+                        nickname VARCHAR(255) NOT NULL,
                         password VARCHAR(255) NOT NULL,
                         email VARCHAR(255) NOT NULL,
                         birthdate INT,
@@ -73,17 +78,17 @@ CREATE TABLE chapter   (
 
 CREATE TABLE language     (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        nom VARCHAR(255) NOT NULL
+                        name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE genre      (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        libelle VARCHAR(255) NOT NULL
+                        label VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE theme      (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        libelle VARCHAR(255) NOT NULL
+                        label VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE rating       (
