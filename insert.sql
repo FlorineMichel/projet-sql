@@ -1,14 +1,16 @@
-INSERT INTO work (title, alt_title, release_date, ending_date, studio ENUM, categorie, description, id_language)
+INSERT INTO language(name) VALUES ('Français'), ('English'), ('日本人'), ('한국어');
+
+INSERT INTO work (title, alt_title, category, description, id_language)
 VALUES 
-/*1*/('となりのトトロ', 'Tonari no Totoro, Mon Voisin Totoro', '1988-04-01', '' ,'Studio Ghibli', '', '', 3),
-/*2*/('Howl\'s Moving Castle / ハウルの動く城', 'Le Château Ambulant / Hauru no Ugoku Shiro', '2004-11-20', '', 'Studio Ghibli', ''; '', 3),
-/*3*/('Clannad', 'クラナド', '2007-10-4', '2008-03-27', 'Kyoto Animation', 'Shojo', '', 3),
-/*4*/('One Piece', 'ワンピース')
-/*5*/('One Piece - l\'arche perdu');
+('となりのトトロ', 'Tonari no Totoro, Mon Voisin Totoro', '', 'Un professeur d\'université, M. Kusakabe, et ses deux filles, Satsuki, onze ans, et Mei, cinq ans, s\'installent dans leur nouvelle maison à la campagne. Celle-ci est proche de l\'hôpital où sa femme est hospitalisée. Explorant les alentours, Mei rencontre Totoro, sorte de créature gigantesque et maître de la forêt. Cet étonnant personnage est accompagné de deux de ses semblables, bien qu\'ils soient de moindres tailles : le plus petit est blanc et le moyen est bleu. Dès lors, Mei n\'a de cesse de rechercher Totoro et de passer du temps en sa compagnie. Elle découvrira notamment les divers et impressionnants pouvoirs de son nouveau compagnon, ainsi que son entourage pour le moins singulier...', 3),
+('Howl\'s Moving Castle / ハウルの動く城', 'Le Château Ambulant / Hauru no Ugoku Shiro', '', '', 3),
+('Clannad', 'クラナド', 'Shojo', 'Tomoya Okasaki est en troisième année au lycée et est considéré comme délinquant. Tout semble immuable dans sa vie de lycéen jusqu\'à ce qu\'il rencontre Nagisa et, dès lors, la vie de Tomoya parut changer. Il commence à rêver d\'un monde sombre dans lequel vit une jeune fille ayant la capacité de créer des objets uniquement à partir d\'ordures, qui lui créa un corps fait à partir de ces ordures. Tomoya entre ainsi dans ce monde vide et sombre et suit la fille, la seule autre existence "survivante" dans ce monde.', 3),
+('ワンピース', 'One Piece', 'Shonen', 'Gloire, fortune et puissance, c\'est ce que possédait Gold Roger, le tout puissant roi des pirates, avant de mourir sur l\'échafaud. Mais ses dernières paroles ont éveillées bien des convoitises, et lança la fabuleuse "ère de la piraterie", chacun voulant trouver le fabuleux trésor qu\'il disait avoir laissé. A 17 ans, Luffy prend la mer dans une petite barque avec pour but de réunir un équipage de pirates, mais de pirates pas comme les autres, qui devront partager sa conception un peu étrange de la piraterie. L\'aventure est lancée.', 3),
+('나 혼자만 레벨업', 'Solo Leveling, Only I level up, Na Honjaman Level Up', 'Shonen', 'Sung Jin Woo est considéré comme le plus faible des Chasseurs de rang E... Autrement dit le plus faible parmi les faibles. Il est tellement faible qu\'il est surnommé par ses confrères, le « Faible ». Avec une équipe de Chasseurs, il se rend dans un donjon de rang D. Malheureusement, l\'équipe se retrouve piégée dans une salle avec des monstres qui ne sont pas du tout du niveau du donjon... S\'en suit un massacre... Et Sung Jin Woo, aux portes de la mort arrive à acquérir une capacité pour le moins étrange...', 4)
+;
 
-INSERT INTO anime () VALUES (3, );
-INSERT INTO movie () VALUES (1), (2);
-INSERT INTO manga () VALUES ();
+INSERT INTO anime (id_work, release_date, ending_date, studio, nbr_total_ep) VALUES (3, '2007-10-4', '2008-03-27', 'Kyoto Animation', 23), (4, '1999-10-20', '2019-07-07', 'Toei Animation', 890);
+INSERT INTO movie (id_work, release_date, studio, duration) VALUES (1, '1988-04-01', 'Studio Ghibli', 86), (2, '2004-11-20', 'Studio Ghibli', 118);
+INSERT INTO manga (id_work, release_date, ending_date, studio, nbr_volume, nbr_chap) VALUES (4, '1997-12-24', '2020-04-03', 'Shueisha', 97, 974), (5, '2019-09-26', '2020-08-27', 'D&C Media, Kakao', 3, 126);
 
 
-INSERT INTO language(name) VALUES ('Français'), ('English'), ('日本人');

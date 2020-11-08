@@ -11,27 +11,30 @@ CREATE TABLE work       (
 );
 
 CREATE TABLE anime      (
-                        id_work INT,
+                        id_work INT PRIMARY KEY,
                         release_date DATE NOT NULL,
                         ending_date DATE,
                         studio ENUM('Toei Animation', 'Kyoto Animation') NOT NULL,
-                        nbr_total_ep INT NOT NULL
+                        nbr_total_ep INT NOT NULL,
+                        FOREIGN KEY(id_work) REFERENCES work (id)
 );
 
 CREATE TABLE movie       (
-                        id_work INT,
+                        id_work INT PRIMARY KEY,
                         release_date DATE NOT NULL,
                         studio ENUM('Studio Ghibli') NOT NULL,
-                        duration INT NOT NULL
+                        duration INT NOT NULL,
+                        FOREIGN KEY(id_work) REFERENCES work (id)
 );
 
 CREATE TABLE manga      (
-                        id_work INT,
+                        id_work INT PRIMARY KEY,
                         release_date DATE NOT NULL,
                         ending_date DATE,
-                        nbr_volume INT NOT NULL,
                         studio ENUM('Shueisha', 'D&C Media, Kakao') NOT NULL,
-                        nbr_chap INT NOT NULL
+                        nbr_volume INT NOT NULL,
+                        nbr_chap INT NOT NULL,
+                        FOREIGN KEY(id_work) REFERENCES work (id)
 );
 
 CREATE TABLE users      (
