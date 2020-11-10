@@ -43,7 +43,7 @@ CREATE TABLE users      (
                         password VARCHAR(255) NOT NULL,
                         email VARCHAR(255) NOT NULL,
                         birthdate INT,
-                        gender VARCHAR(255),
+                        gender ENUM('male', 'female', 'unknown'),
                         id_language INT,
                         FOREIGN KEY (id_language) REFERENCES language (id)
 );
