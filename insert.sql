@@ -1,4 +1,4 @@
-INSERT INTO language(name) VALUES ('Français'), ('English'), ('日本人'), ('한국어');
+INSERT INTO language(name) VALUES ('Arabic'), ('Bengali'), ('Bulgarian'), ('Burmese'), ('Catalan'), ('Chinese(Simp)'), ('Chinese(Hong-Kong)'), ('Czech'), ('Danish'), ('Dutch'), ('English'), ('Filipino'), ('Finnish'), ('French'), ('German'), ('Greek'), ('Hebrew'), ('Hindi'), ('Hungarian'), ('Indonesian'), ('Italian'), ('Japanese'), ('Korean'), ('Lithuanian'), ('Malay'), ('Mongolian'), ('Norwegian'), ('Other'), ('Persian'), ('Polish'), ('Portuguese(BR)'), ('Portuguese(PT)'), ('Romanian'), ('Russian'), ('Serbo-Russian'), ('Spanish(ES)'), ('Spanish(LATAM)'), ('Swedish'), ('Thai'), ('Turkish'), ('Ukrainian'), ('Vietnamese');
 
 INSERT INTO work (title, alt_title, category, description, id_language)
 VALUES 
@@ -6,7 +6,7 @@ VALUES
 ('Howl\'s Moving Castle / ハウルの動く城', 'Le Château Ambulant / Hauru no Ugoku Shiro', '', '', 3),
 ('Clannad', 'クラナド', 'Shojo', 'Tomoya Okasaki est en troisième année au lycée et est considéré comme délinquant. Tout semble immuable dans sa vie de lycéen jusqu\'à ce qu\'il rencontre Nagisa et, dès lors, la vie de Tomoya parut changer. Il commence à rêver d\'un monde sombre dans lequel vit une jeune fille ayant la capacité de créer des objets uniquement à partir d\'ordures, qui lui créa un corps fait à partir de ces ordures. Tomoya entre ainsi dans ce monde vide et sombre et suit la fille, la seule autre existence "survivante" dans ce monde.', 3),
 ('ワンピース', 'One Piece', 'Shonen', 'Gloire, fortune et puissance, c\'est ce que possédait Gold Roger, le tout puissant roi des pirates, avant de mourir sur l\'échafaud. Mais ses dernières paroles ont éveillées bien des convoitises, et lança la fabuleuse "ère de la piraterie", chacun voulant trouver le fabuleux trésor qu\'il disait avoir laissé. A 17 ans, Luffy prend la mer dans une petite barque avec pour but de réunir un équipage de pirates, mais de pirates pas comme les autres, qui devront partager sa conception un peu étrange de la piraterie. L\'aventure est lancée.', 3),
-('나 혼자만 레벨업', 'Solo Leveling, Only I level up, Na Honjaman Level Up', 'Shonen', 'Sung Jin Woo est considéré comme le plus faible des Chasseurs de rang E... Autrement dit le plus faible parmi les faibles. Il est tellement faible qu\'il est surnommé par ses confrères, le « Faible ». Avec une équipe de Chasseurs, il se rend dans un donjon de rang D. Malheureusement, l\'équipe se retrouve piégée dans une salle avec des monstres qui ne sont pas du tout du niveau du donjon... S\'en suit un massacre... Et Sung Jin Woo, aux portes de la mort arrive à acquérir une capacité pour le moins étrange...', 4)
+('나 혼자만 레벨업', 'Solo Leveling, Only I level up, Na Honjaman Level Up', 'Shonen', 'Sung Jin Woo est considéré comme le plus faible des Chasseurs de rang E... Autrement dit le plus faible parmi les faibles. Il est tellement faible qu\'il est surnommé par ses confrères, le « Faible ». Avec une équipe de Chasseurs, il se rend dans un donjon de rang D. Malheureusement, l\'équipe se retrouve piégée dans une salle avec des monstres qui ne sont pas du tout du niveau du donjon... S\'en suit un massacre... Et Sung Jin Woo, aux portes de la mort arrive à acquérir une capacité pour le moins étrange...'', 4)
 ;
 
 INSERT INTO anime (id_work, release_date, ending_date, studio, nbr_total_ep) VALUES (3, '2007-10-4', '2008-03-27', 'Kyoto Animation', 23), (4, '1999-10-20', '2019-07-07', 'Toei Animation', 890);
@@ -14,3 +14,4 @@ INSERT INTO movie (id_work, release_date, studio, duration) VALUES (1, '1988-04-
 INSERT INTO manga (id_work, release_date, ending_date, studio, nbr_volume, nbr_chap) VALUES (4, '1997-12-24', '2020-04-03', 'Shueisha', 97, 974), (5, '2019-09-26', '2020-08-27', 'D&C Media, Kakao', 3, 126);
 
 
+INSERT INTO 
