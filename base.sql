@@ -52,9 +52,7 @@ CREATE TABLE artist     (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
                         lastname VARCHAR(255) NOT NULL,
                         firstname VARCHAR(255) NOT NULL,
-                        birthdate INT,
-                        deathdate INT,
-                        gender VARCHAR(255),
+                        gender ENUM('male', 'female'),
                         id_language INT NOT NULL,
                         FOREIGN KEY (id_language) REFERENCES language (id)
 );
@@ -121,7 +119,7 @@ CREATE TABLE themeWork	(
 CREATE TABLE technicalDatasheet	(
 								id_work INT NOT NULL,
 								id_artist INT NOT NULL,
-								occupation ENUM('occ1', 'occ2', 'occ3') NOT NULL,
+								occupation ENUM('Author', 'Scripwriter', 'Designer', 'Director', 'Character Designer', 'Music') NOT NULL,
 								PRIMARY KEY (id_work, id_artist),
 								FOREIGN KEY (id_work) REFERENCES work (id),
 								FOREIGN KEY (id_artist) REFERENCES artist (id)
