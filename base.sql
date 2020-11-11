@@ -4,7 +4,7 @@ CREATE TABLE work       (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
                         title VARCHAR(255) NOT NULL,
                         alt_title VARCHAR(255),
-                        category ENUM('Kodomo', 'Shonen', 'Shojo', 'Seinen', 'Josei', 'Seijin', 'Webcomic', 'Hentai'),
+                        category ENUM('Kodomo', 'Shonen', 'Shojo', 'Seinen', 'Josei', 'Seijin', 'Webcomic', 'Hentai', 'Unknown'),
                         description VARCHAR(255),
                         id_language INT NOT NULL,
                         FOREIGN KEY (id_language) REFERENCES language (id)
