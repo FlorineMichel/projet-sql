@@ -2,10 +2,10 @@ CREATE DATABASE IF NOT EXISTS Pieces CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE work       (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        title VARCHAR(255) NOT NULL,
-                        alt_title VARCHAR(255),
+                        title LONGTEXT NOT NULL,
+                        alt_title LONGTEXT,
                         category ENUM('Kodomo', 'Shonen', 'Shojo', 'Seinen', 'Josei', 'Seijin', 'Webcomic', 'Hentai', 'Unknown'),
-                        description VARCHAR(255),
+                        description LONGTEXT,
                         id_language INT NOT NULL,
                         FOREIGN KEY (id_language) REFERENCES language (id)
 );
@@ -39,9 +39,9 @@ CREATE TABLE manga      (
 
 CREATE TABLE users      (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        nickname VARCHAR(255) NOT NULL,
-                        password VARCHAR(255) NOT NULL,
-                        email VARCHAR(255) NOT NULL,
+                        nickname LONGTEXT NOT NULL,
+                        password LONGTEXT NOT NULL,
+                        email LONGTEXT NOT NULL,
                         gender ENUM('male', 'female', 'unknown'),
                         id_language INT,
                         FOREIGN KEY (id_language) REFERENCES language (id)
@@ -49,8 +49,8 @@ CREATE TABLE users      (
 
 CREATE TABLE artist     (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        lastname VARCHAR(255) NOT NULL,
-                        firstname VARCHAR(255) NOT NULL,
+                        lastname LONGTEXT NOT NULL,
+                        firstname LONGTEXT NOT NULL,
                         gender ENUM('male', 'female', 'unknown'),
                         id_language INT NOT NULL,
                         FOREIGN KEY (id_language) REFERENCES language (id)
@@ -59,7 +59,7 @@ CREATE TABLE artist     (
 CREATE TABLE episode    (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
                         nbr_episode INT NOT NULL,
-                        title VARCHAR(255) NOT NULL,
+                        title LONGTEXT NOT NULL,
                         id_language INT NOT NULL,
                         id_anime INT NOT NULL, 
                         FOREIGN KEY (id_language) REFERENCES language (id),
@@ -69,7 +69,7 @@ CREATE TABLE episode    (
 CREATE TABLE chapter   (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
                         nbr_chapter INT NOT NULL,
-                        title VARCHAR(255) NOT NULL,
+                        title LONGTEXT NOT NULL,
                         id_manga INT NOT NULL,
                         id_language INT NOT NULL,
                         FOREIGN KEY (id_language) REFERENCES language (id),
@@ -78,17 +78,17 @@ CREATE TABLE chapter   (
 
 CREATE TABLE language     (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        name VARCHAR(255) NOT NULL
+                        name LONGTEXT NOT NULL
 );
 
 CREATE TABLE genre      (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        label VARCHAR(255) NOT NULL
+                        label LONGTEXT NOT NULL
 );
 
 CREATE TABLE theme      (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        label VARCHAR(255) NOT NULL
+                        label LONGTEXT NOT NULL
 );
 
 CREATE TABLE rating       (
