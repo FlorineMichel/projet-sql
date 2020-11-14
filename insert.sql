@@ -30,3 +30,8 @@ INSERT INTO rating(id_work, id_user, rating) VALUES (1, 1, 7), (1, 2, 8), (1, 3,
                                                     (3, 1, 6), (3, 2, 7), (3, 3, 9), (3, 4, 7), (3, 5, 5),
                                                     (4, 1, 8), (4, 2, 3), (4, 3, 8), (4, 4, 6), (4, 5, 9),
                                                     (5, 1, 7), (5, 2, 5), (5, 3, 6), (5, 4, 8), (5, 5, 8);
+
+INSERT INTO chapter(nbr_chapter, title, id_manga, id_language) VALUE (1, "Romance Dawn", 4, 11), (1, "They call him \'Straw Hat Luffy\'", 4, 11), (1, "", 5, 11), (1, "", 5, 14);
+
+INSERT INTO episode(nbr_episode, title, id_language, id_anime) VALUE    (1, "Je suis Luffy, Celui qui deviendra le roi des pirates", 14, 4), (2, "Le grand manieur de sabres! Roronoa Zoro, chasseur de pirates!", 14, 4),
+                                                                        (1, "La colline où dansent les pétales de cerisiers", 14, 3), (2, "La première étape", 14, 3);
