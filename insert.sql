@@ -25,4 +25,8 @@ INSERT INTO users(nickname, password, email, gender, id_language) VALUES ('vani'
 INSERT INTO genreWork(id_work, id_genre) VALUES (1, 7), (1, 8), (2, 7), (2, 8), (2, 11), (2, 21), (3, 8), (3, 10), (3, 21), (3, 25), (4, 6), (4, 7), (4, 8), (4, 10), (4, 11), (5, 6), (5, 11);
 INSERT INTO ThemeWork(id_work, id_theme) VALUES (1, 29), (2, 14), (3, 10), (3, 29), (3, 27), (4, 14), (4, 3), (5, 14), (5, 18), (5, 24), (5, 30); 
 
-INSERT INTO rating(id_work, id_user, rating)
+INSERT INTO rating(id_work, id_user, rating) VALUES (1, 1, 7), (1, 2, 8), (1, 3, 3), (1, 4, 9), (1, 5, 10),
+                                                    (2, 1, 3), (2, 2, 4), (2, 3, 1), (2, 4, 6), (2, 5, 2),
+                                                    (3, 1, 6), (3, 2, 7), (3, 3, 9), (3, 4, 7), (3, 5, 5),
+                                                    (4, 1, 8), (4, 2, 3), (4, 3, 8), (4, 4, 6), (4, 5, 9),
+                                                    (5, 1, 7), (5, 2, 5), (5, 3, 6), (5, 4, 8), (5, 5, 8);
