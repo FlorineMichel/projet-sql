@@ -21,3 +21,8 @@ INSERT INTO technicalDataSheet(id_work, id_artist, occupation) VALUES (1, 1, 'Au
 INSERT INTO artist(lastname, firstname, gender, id_language) VALUES ('Miyazaki', 'Hayao', 'male', 22), ('Sato', 'Yoshiharu', 'male', 22), ('Jones', 'Diana Wynne', 'female', 11), ('Yamashita', 'Akihiko', 'male', 22), ('Hiraishi', 'Joe', 'male', 22), ('Ishihara', 'Tatsuya', 'male', 22), ('Shimo', 'Fumihiko', 'male', 22), ('Ikeda', 'Kazumi', 'male', 22), ('Hinoue', 'Itaru', 'female', 22), ('Maeda', 'Jun', 'male', 22), ('Eiichiro', 'Oda', 'male', 22), ('Fukazawa', 'Toshinori', 'male', 22), ('Ito', 'Satoshi', 'male', 22), ('Chu', 'gong', 'unknown', 23), ('Jang', 'Sung-Rak', 'male', 23), ('Gi', 'So-Ryeong', 'male', 23);
 
 INSERT INTO users(nickname, password, email, gender, id_language) VALUES ('vani', 'supervani', 'vani@gmail.fr', 'male', 14), ('hamtoé', 'jambon94', 'hamtoé@mail.com', 'male', 14), ('superuser', 'jesuissuperuser', 'user@user.fr', 'unknown', 28), ('moi', 'lui', 'elle@onnesaitplus.net', 'unknown', 5), ('Jacqueline', 'monchienestblanc', 'jacquelinevillard@hotmail.fr', 'female', 13);
+
+INSERT INTO genreWork(id_work, id_genre) VALUES (1, 7), (1, 8), (2, 7), (2, 8), (2, 11), (2, 21), (3, 8), (3, 10), (3, 21), (3, 25), (4, 6), (4, 7), (4, 8), (4, 10), (4, 11), (5, 6), (5, 11);
+INSERT INTO ThemeWork(id_work, id_theme) VALUES (1, 29), (2, 14), (3, 10), (3, 29), (3, 27), (4, 14), (4, 3), (5, 14), (5, 18), (5, 24), (5, 30); 
+
+INSERT INTO rating(id_work, id_user, rating)
