@@ -59,7 +59,7 @@ CREATE TABLE artist     (
 CREATE TABLE episode    (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
                         nbr_episode INT NOT NULL,
-                        title LONGTEXT NOT NULL,
+                        title LONGTEXT,
                         id_language INT NOT NULL,
                         id_anime INT NOT NULL, 
                         FOREIGN KEY (id_language) REFERENCES language (id),
@@ -69,7 +69,7 @@ CREATE TABLE episode    (
 CREATE TABLE chapter   (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
                         nbr_chapter INT NOT NULL,
-                        title LONGTEXT NOT NULL,
+                        title LONGTEXT,
                         id_manga INT NOT NULL,
                         id_language INT NOT NULL,
                         FOREIGN KEY (id_language) REFERENCES language (id),
