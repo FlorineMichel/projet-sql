@@ -1,11 +1,13 @@
 CREATE DATABASE IF NOT EXISTS Pieces CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+USE 'pieces';
+
 CREATE TABLE work       (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        title LONGTEXT NOT NULL,
-                        alt_title LONGTEXT,
+                        title VARCHAR(255) NOT NULL,
+                        alt_title VARCHAR(255),
                         category ENUM('Kodomo', 'Shonen', 'Shojo', 'Seinen', 'Josei', 'Seijin', 'Webcomic', 'Hentai', 'Unknown'),
-                        description LONGTEXT,
+                        description VARCHAR(255),
                         id_language INT NOT NULL,
                         FOREIGN KEY (id_language) REFERENCES language (id)
 );
@@ -39,9 +41,9 @@ CREATE TABLE manga      (
 
 CREATE TABLE users      (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        nickname LONGTEXT NOT NULL,
-                        password LONGTEXT NOT NULL,
-                        email LONGTEXT NOT NULL,
+                        nickname VARCHAR(255) NOT NULL,
+                        password VARCHAR(255) NOT NULL,
+                        email VARCHAR(255) NOT NULL,
                         gender ENUM('male', 'female', 'unknown'),
                         id_language INT,
                         FOREIGN KEY (id_language) REFERENCES language (id)
@@ -49,8 +51,8 @@ CREATE TABLE users      (
 
 CREATE TABLE artist     (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        lastname LONGTEXT NOT NULL,
-                        firstname LONGTEXT NOT NULL,
+                        lastname VARCHAR(255) NOT NULL,
+                        firstname VARCHAR(255) NOT NULL,
                         gender ENUM('male', 'female', 'unknown'),
                         id_language INT NOT NULL,
                         FOREIGN KEY (id_language) REFERENCES language (id)
@@ -59,7 +61,7 @@ CREATE TABLE artist     (
 CREATE TABLE episode    (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
                         nbr_episode INT NOT NULL,
-                        title LONGTEXT,
+                        title VARCHAR(255),
                         id_language INT NOT NULL,
                         id_anime INT NOT NULL, 
                         FOREIGN KEY (id_language) REFERENCES language (id),
@@ -69,7 +71,7 @@ CREATE TABLE episode    (
 CREATE TABLE chapter   (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
                         nbr_chapter INT NOT NULL,
-                        title LONGTEXT,
+                        title VARCHAR(255),
                         id_manga INT NOT NULL,
                         id_language INT NOT NULL,
                         FOREIGN KEY (id_language) REFERENCES language (id),
@@ -78,17 +80,17 @@ CREATE TABLE chapter   (
 
 CREATE TABLE language     (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        name LONGTEXT NOT NULL
+                        name VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE genre      (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        label LONGTEXT NOT NULL
+                        label VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE theme      (
                         id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-                        label LONGTEXT NOT NULL
+                        label VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE rating       (
@@ -148,6 +150,19 @@ INSERT INTO artist(lastname, firstname, gender, id_language) VALUES ('Miyazaki',
 
 INSERT INTO users(nickname, password, email, gender, id_language) VALUES ('vani', 'supervani', 'vani@gmail.fr', 'male', 14), ('hamtoé', 'jambon94', 'hamtoé@mail.com', 'male', 14), ('superuser', 'jesuissuperuser', 'user@user.fr', 'unknown', 28), ('moi', 'lui', 'elle@onnesaitplus.net', 'unknown', 5), ('Jacqueline', 'monchienestblanc', 'jacquelinevillard@hotmail.fr', 'female', 13);
 
+INSERT INTO genreWork(id_work, id_genre) VALUES (1, 7), (1, 8), (2, 7), (2, 8), (2, 11), (2, 21), (3, 8), (3, 10), (3, 21), (3, 25), (4, 6), (4, 7), (4, 8), (4, 10), (4, 11), (5, 6), (5, 11);
+INSERT INTO ThemeWork(id_work, id_theme) VALUES (1, 29), (2, 14), (3, 10), (3, 29), (3, 27), (4, 14), (4, 3), (5, 14), (5, 18), (5, 24), (5, 30); 
+
+INSERT INTO rating(id_work, id_user, rating) VALUES (1, 1, 7), (1, 2, 8), (1, 3, 3), (1, 4, 9), (1, 5, 10),
+(2, 1, 3), (2, 2, 4), (2, 3, 1), (2, 4, 6), (2, 5, 2),
+(3, 1, 6), (3, 2, 7), (3, 3, 9), (3, 4, 7), (3, 5, 5),
+(4, 1, 8), (4, 2, 3), (4, 3, 8), (4, 4, 6), (4, 5, 9),
+(5, 1, 7), (5, 2, 5), (5, 3, 6), (5, 4, 8), (5, 5, 8);
+
+INSERT INTO chapter(nbr_chapter, title, id_manga, id_language) VALUE (1, "Romance Dawn", 4, 11), (1, "They call him \'Straw Hat Luffy\'", 4, 11), (1, "", 5, 11), (1, "", 5, 14);
+
+INSERT INTO episode(nbr_episode, title, id_language, id_anime) VALUE    (1, "Je suis Luffy, Celui qui deviendra le roi des pirates", 14, 4), (2, "Le grand manieur de sabres! Roronoa Zoro, chasseur de pirates!", 14, 4), (1, "La colline où dansent les pétales de cerisiers", 14, 3), (2, "La première étape", 14, 3);
+
 /*1.      Voir toutes les œuvres dont l’artiste « Hayao Miyazaki » (et son rôle) a été impliqué (LIKE + jointure)*/
 SELECT title, occupation 
 FROM work 
@@ -156,17 +171,12 @@ LEFT JOIN artist ON technicaldatasheet.id_artist = artist.id
 WHERE lastname LIKE 'Miyazaki';
 
 /*2.      Connaître le nombre d’épisode paru pour chaque anime (COUNT)*/
-SELECT COUNT(id), title 
-FROM anime 
-LEFT OUTER JOIN episode ON anime.id_work = episode.id_anime 
-GROUP BY title;
+SELECT COUNT(e.id), w.title 
+FROM anime a LEFT OUTER JOIN episode e ON a.id_work = e.id_anime 
+LEFT OUTER join work w ON a.id_work = w.id 
+GROUP BY w.title
 
 /*3.      Voir tous les films dont la moyenne de la note est supérieure à 4 par artiste (AVG + HAVING + jointure + GROUP BY)*/
-/*SELECT title, AVG(rating), lastname, firstname
-FROM work, rating + jointure
-GROUP BY lastname
-HAVING AVG(rating) >= 4 ;
-OU*/
 SELECT title, AVG(rating) 
 FROM work 
 INNER JOIN rating ON rating.id_work = work.id 
