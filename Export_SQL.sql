@@ -1,17 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.0.2
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1:3306
--- Généré le : sam. 14 nov. 2020 à 16:41
--- Version du serveur :  8.0.21
--- Version de PHP : 7.3.21
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Base de données : pieces
 --
@@ -544,27 +530,29 @@ INSERT or REPLACE INTO work (id, title, alt_title, category, description, id_lan
 (4, 'ワンピース', 'One Piece', 'Shonen', "Gloire, fortune et puissance, c'est ce que possédait Gold Roger, le tout puissant roi des pirates, avant de mourir sur l'échafaud. Mais ses dernières paroles ont éveillées bien des convoitises, et lança la fabuleuse ère de la piraterie , chacun ...", 22),
 (5, '나 혼자만 레벨업', 'Solo Leveling, Only I level up, Na Honjaman Level Up', 'Shonen', "Sung Jin Woo est considéré comme le plus faible des Chasseurs de rang E... Autrement dit le plus faible parmi les faibles. Il est tellement faible qu'il est surnommé par ses confrères, le « Faible ». Avec une équipe de Chasseurs, il se rend dans un ...", 23);
 
-/*1.      Voir toutes les œuvres dont l’artiste « Hayao Miyazaki » (et son rôle) a été impliqué (LIKE + jointure)*/
+
+-- 1. Voir toutes les œuvres dont l’artiste « Hayao Miyazaki » (et son rôle) a été impliqué (LIKE + jointure)
+
 SELECT title, occupation 
 FROM work 
 INNER JOIN technicaldatasheet ON work.id = technicaldatasheet.id_work 
 LEFT JOIN artist ON technicaldatasheet.id_artist = artist.id 
 WHERE lastname LIKE 'Miyazaki';
 
-/*2.      Connaître le nombre d’épisode paru pour chaque anime (COUNT)*/
+-- 2. Connaître le nombre d’épisode paru pour chaque anime (COUNT)
 SELECT COUNT(*), w.title 
 FROM anime a LEFT OUTER JOIN episode e ON a.id_work = e.id_anime 
 LEFT OUTER join work w ON a.id_work = w.id 
 GROUP BY w.title;
 
-/*3.      Voir tous les films dont la moyenne de la note est supérieure à 4 par artiste (AVG + HAVING + jointure + GROUP BY)*/
+-- 3. Voir tous les films dont la moyenne de la note est supérieure à 4 par artiste (AVG + HAVING + jointure + GROUP BY)
 SELECT title, AVG(rating) 
 FROM work 
 INNER JOIN rating ON rating.id_work = work.id 
 GROUP BY title 
 HAVING AVG(rating) >= 7;
 
-/*4.      Voir tous les utilisateurs (+ leur note) qui ont émis une note sur le manga « Naruto » (LIKE + jointure)*/
+-- 4. Voir tous les utilisateurs (+ leur note) qui ont émis une note sur le manga « Naruto » (LIKE + jointure)
 SELECT nickname, rating 
 FROM users 
 INNER JOIN rating ON users.id = rating.id_user 
